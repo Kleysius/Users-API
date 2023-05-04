@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>API Users</title>
+</head>
+
+<body>
+    <header>
+        <h1>API User</h1>
+        <div class="create">
+            <button id="btnAdd" type="button">Ajouter un utilisateur</button>
+        </div>
+        <div id="message"></div>
+    </header>
+    <main>
+        <section class="card-container"></section>
+        <div class="addForm">
+            <form class="formAdd">
+                <label for="name">Nom :</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="firstName">Prénom :</label>
+                <input type="text" id="firstName" name="firstName" required>
+
+                <label for="email">Email :</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="password">Mot de passe :</label>
+                <input type="password" id="password" name="password" required>
+
+                <button type="button" onclick="postUser()">Créer</button>
+            </form>
+        </div>
+
+    </main>
+    <footer>
+
+    </footer>
+    <script src="./assets/js/script.js"></script>
+</body>
+
+</html>

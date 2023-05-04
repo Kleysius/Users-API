@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #333;
+    font-family: 'Poppins', sans-serif;
+}
+
+header {
+    position: fixed;
+    display: flex;
+    background-color: #291571e8;
+    box-shadow: 0px 0px 10px #ffaa00;
+    color: #ffaa00;
+    border: 1px solid #c88c12 ;
+    border-radius: 10px;
+    width: 835px;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 80%;
+    padding: 5px;
+    justify-content: space-evenly;
+    align-items: center;
+    cursor: grab;
+}
+
+header:active {
+    cursor: grabbing;
+}
+
+#message {
+    text-align: center;
+    width: 420px;
+}
+
+.create {
+    display: flex;
+    align-items: center;
+}
+
+#btnAdd {
+    background-color: #ffb012;
+    border-radius: 10px;
+    color: #333;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#btnAdd:hover {
+    background-color: #c88c12;
+}
+
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.card-container div {
+    display: flex;
+    background-color: #5c5c5c;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 0px 6px #000;
+    margin: 10px;
+    padding: 15px;
+    width: 260px;
+    height: 280px;
+    flex-direction: column;
+    justify-content: space-evenly;
+    transition: background-color 0.3s ease;
+}
+
+.card-container div:hover {
+    background-color: #42307ed6;
+    box-shadow: inset 0px 0px 6px rgba(0, 0, 0, 0.8);
+}
+
+.card-container img {
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+}
+
+.card-container p {
+    color: #c7c7c7;
+    font-weight: 400;
+    font-size: 0.9rem;
+    margin: 5px 0;
+}
+
+.card-container .button-modify {
+    font-family: 'Poppins', sans-serif;
+    background-color: #2cae69ba;
+    width: 50%;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.card-container .button-modify:hover {
+    background-color: #217e4ccf;
+}
+
+.card-container .button-delete {
+    font-family: 'Poppins', sans-serif;
+    background-color: #cd252a;
+    width: 50%;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.card-container .button-delete:hover {
+    background-color: #a51217;
+}
+
+.form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff26;
+    backdrop-filter: blur(20px);
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
+    display: none;
+    margin: 10px auto;
+    padding: 20px;
+    text-align: center;
+    width: 300px;
+}
+
+.form label {
+    display: block;
+    color: #fafafa;
+    margin-bottom: 5px;
+    font-weight: 500;
+    text-align: left;
+}
+
+.form input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    margin-bottom: 10px;
+}
+
+.form button {
+    font-family: 'Poppins', sans-serif;
+    background-color: #2a1a92;
+    color: #ffb012;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.form button:hover {
+    background-color: #1c1166;
+}
+
+.addForm {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    background-color: #ffffff26;
+    backdrop-filter: blur(20px);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.addForm label {
+    display: block;
+    color: #fafafa;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.addForm input[type="text"],
+.addForm input[type="email"],
+.addForm input[type="password"] {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    margin-bottom: 10px;
+}
+
+.addForm button {
+    font-family: 'Poppins', sans-serif;
+    background-color: #2a1a92;
+    color: #ffb012;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.addForm button:hover {
+    background-color: #1c1166;
+}
+
+.addForm button:focus {
+    outline: none;
+}
