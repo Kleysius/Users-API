@@ -17,7 +17,7 @@ header {
     background-color: #291571e8;
     box-shadow: 0px 0px 10px #ffaa00;
     color: #ffaa00;
-    border: 1px solid #c88c12 ;
+    border: 1px solid #c88c12;
     border-radius: 10px;
     width: 835px;
     transform: translate(-50%, -50%);
@@ -75,14 +75,13 @@ header:active {
     margin: 10px;
     padding: 15px;
     width: 260px;
-    height: 280px;
     flex-direction: column;
     justify-content: space-evenly;
     transition: background-color 0.3s ease;
 }
 
 .card-container div:hover {
-    background-color: #42307ed6;
+    background-color: #291571e8;
     box-shadow: inset 0px 0px 6px rgba(0, 0, 0, 0.8);
 }
 
@@ -90,6 +89,10 @@ header:active {
     height: 120px;
     width: 120px;
     border-radius: 50%;
+}
+
+.allLabel {
+    color: #ffaa00;
 }
 
 .card-container p {
@@ -102,12 +105,14 @@ header:active {
 .card-container .button-modify {
     font-family: 'Poppins', sans-serif;
     background-color: #2cae69ba;
+    box-shadow: inset 0px 0px 6px #000;
     width: 50%;
     border: none;
     border-radius: 5px;
     color: white;
     cursor: pointer;
     font-size: 0.9rem;
+    margin-bottom: 10px;
     padding: 5px;
     transition: background-color 0.3s ease;
 }
@@ -119,6 +124,7 @@ header:active {
 .card-container .button-delete {
     font-family: 'Poppins', sans-serif;
     background-color: #cd252a;
+    box-shadow: inset 0px 0px 6px #000;
     width: 50%;
     border: none;
     border-radius: 5px;
@@ -168,7 +174,7 @@ header:active {
 
 .form button {
     font-family: 'Poppins', sans-serif;
-    background-color: #2a1a92;
+    background-color: #291571e8;
     color: #ffb012;
     font-weight: 600;
     font-size: 1rem;
@@ -181,7 +187,7 @@ header:active {
 }
 
 .form button:hover {
-    background-color: #1c1166;
+    background-color: #201059e8;
 }
 
 .addForm {
@@ -207,7 +213,8 @@ header:active {
 
 .addForm input[type="text"],
 .addForm input[type="email"],
-.addForm input[type="password"] {
+.addForm input[type="password"],
+.addForm input[type="number"] {
     width: 100%;
     padding: 5px;
     border: 1px solid #ccc;
@@ -218,7 +225,7 @@ header:active {
 
 .addForm button {
     font-family: 'Poppins', sans-serif;
-    background-color: #2a1a92;
+    background-color: #291571e8;
     color: #ffb012;
     font-weight: 600;
     font-size: 1rem;
@@ -227,10 +234,11 @@ header:active {
     border-radius: 5px;
     cursor: pointer;
     margin-top: 10px;
+    width: 100%;
 }
 
 .addForm button:hover {
-    background-color: #1c1166;
+    background-color: #201059e8;
 }
 
 .addForm button:focus {

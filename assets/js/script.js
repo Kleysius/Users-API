@@ -15,7 +15,6 @@ document.addEventListener('mousemove', function (e) {
     if (!isDragging) {
         return;
     }
-
     header.style.left = e.clientX - offsetX + 'px';
     header.style.top = e.clientY - offsetY + 'px';
 });
@@ -25,9 +24,8 @@ document.addEventListener('mouseup', function (e) {
     isDragging = false;
 });
 
-
 async function getUsers() {
-    let users = await fetch("http://146.59.242.125:3001/users", {
+    let users = await fetch("http://localhost:3000/users", {
         method: "GET",
         headers: {
             'Accept': 'application/json, text/plain, /',
@@ -45,17 +43,25 @@ function displayUser(users) {
         let card = document.createElement('div');
         parent.appendChild(card);
 
-        let firstname = document.createElement('p');
-        firstname.innerHTML = "Nom : " + '<br>' + elem.firstname;
-        card.appendChild(firstname);
-
         let name = document.createElement('p');
-        name.innerHTML = "Prénom : " + '<br>' + elem.name;
+        name.innerHTML = "Nom : " + '<br>' + elem.name;
         card.appendChild(name);
 
+        let firstname = document.createElement('p');
+        firstname.innerHTML = "Prénom : " + '<br>' + elem.firstname;
+        card.appendChild(firstname);
+
+        let age = document.createElement('p');
+        age.innerHTML = "Age : " + '<br>' + elem.age;
+        card.appendChild(age);
+
         let email = document.createElement('p');
-        email.innerHTML = "Email : " + '<br>' + elem.mail;
+        email.innerHTML = "Email : " + '<br>' + elem.email;
         card.appendChild(email);
+
+        let mdp = document.createElement('p');
+        mdp.innerHTML = "Mot de passe : " + '<br>' + elem.password;
+        card.appendChild(mdp);
 
         let modifyButton = document.createElement('button');
         modifyButton.innerHTML = "Modifier";
@@ -65,9 +71,10 @@ function displayUser(users) {
             modifyForm.style.display = "block";
 
             // Pré-remplir les champs du formulaire avec les données de l'utilisateur sélectionné
-            modifyFirstnameInput.value = elem.firstname;
             modifyNameInput.value = elem.name;
-            modifyEmailInput.value = elem.mail;
+            modifyFirstnameInput.value = elem.firstname;
+            modifyAgeInput.value = elem.age;
+            modifyEmailInput.value = elem.email;
             modifyMdpInput.value = elem.password;
 
             // Enregistrer l'ID de l'utilisateur sélectionné pour pouvoir le modifier plus tard
@@ -93,21 +100,29 @@ function displayUser(users) {
     modifyForm.style.display = "none"; // Masquer le formulaire au début
     parent.appendChild(modifyForm);
 
+    let modifyNameLabel = document.createElement('label');
+    modifyNameLabel.innerHTML = "Nom : ";
+    modifyForm.appendChild(modifyNameLabel);
+    
+    let modifyNameInput = document.createElement('input');
+    modifyNameInput.type = "text";
+    modifyForm.appendChild(modifyNameInput);
+
     let modifyFirstnameLabel = document.createElement('label');
-    modifyFirstnameLabel.innerHTML = "Nom : ";
+    modifyFirstnameLabel.innerHTML = "Prénom : ";
     modifyForm.appendChild(modifyFirstnameLabel);
 
     let modifyFirstnameInput = document.createElement('input');
     modifyFirstnameInput.type = "text";
     modifyForm.appendChild(modifyFirstnameInput);
+    
+    let modifyAgeLabel = document.createElement('label');
+    modifyAgeLabel.innerHTML = "Age : ";
+    modifyForm.appendChild(modifyAgeLabel);
 
-    let modifyNameLabel = document.createElement('label');
-    modifyNameLabel.innerHTML = "Prénom : ";
-    modifyForm.appendChild(modifyNameLabel);
-
-    let modifyNameInput = document.createElement('input');
-    modifyNameInput.type = "text";
-    modifyForm.appendChild(modifyNameInput);
+    let modifyAgeInput = document.createElement('input');
+    modifyAgeInput.type = "number";
+    modifyForm.appendChild(modifyAgeInput);
 
     let modifyEmailLabel = document.createElement('label');
     modifyEmailLabel.innerHTML = "Email : ";
@@ -130,22 +145,24 @@ function displayUser(users) {
     modifySubmitButton.innerHTML = "Enregistrer";
     modifySubmitButton.onclick = async function () {
         // Récupérer les nouvelles valeurs saisies dans le formulaire
-        let newFirstname = modifyFirstnameInput.value;
         let newName = modifyNameInput.value;
+        let newFirstname = modifyFirstnameInput.value;
+        let newAge = modifyAgeInput.value;
         let newEmail = modifyEmailInput.value;
         let newMdp = modifyMdpInput.value;
 
         // Mettre à jour les données de l'utilisateur sélectionné sur le serveur
-        let response = await fetch(`http://146.59.242.125:3001/user/${userId}`, {
+        let response = await fetch(`http://localhost:3000/users/${userId}`, {
             method: "PUT",
             headers: {
                 'Accept': 'application/json, text/plain, /',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                firstname: newFirstname,
                 name: newName,
-                mail: newEmail,
+                firstname: newFirstname,
+                age: newAge,
+                email: newEmail,
                 password: newMdp
             })
         });
@@ -163,13 +180,11 @@ function displayUser(users) {
     let userId = null;
 }
 
-
-
 getUsers();
 
 async function deleteUser(userId) {
     try {
-        let response = await fetch(`http://146.59.242.125:3001/user/${userId}`, {
+        let response = await fetch(`http://localhost:3000/users/${userId}`, {
             method: 'DELETE',
             headers: {
                 'Accept': 'application/json, text/plain, /',
@@ -194,10 +209,11 @@ async function postUser() {
     let obj = {
         name: document.getElementById('name').value,
         firstname: document.getElementById('firstName').value,
-        mail: document.getElementById('email').value,
+        age: document.getElementById('age').value,
+        email: document.getElementById('email').value,
         password: document.getElementById('password').value
     }
-    let user = await fetch("http://146.59.242.125:3001/user", {
+    let user = await fetch("http://localhost:3000/user", {
         method: "POST",
         headers: {
             'Accept': 'application/json, text/plain, /',
@@ -212,3 +228,34 @@ document.getElementById('btnAdd').addEventListener("click", () => {
     let addForm = document.querySelector(".addForm");
     addForm.style.display = "block";
 })
+
+// Fonction pour se connecter
+async function login() {
+    let obj = {
+        email: document.getElementById('emailLogin').value,
+        password: document.getElementById('passwordLogin').value
+    }
+    let user = await fetch("http://localhost:3000/user/login", {
+        method: "POST",
+        headers: {
+            'Accept': 'application/json, text/plain, /',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(obj) // Création d'un json à partir d'un objet Javascript
+    })
+
+    // Si la connexion a réussi, rediriger vers la page d'accueil après avoir affiché un message de bienvenue pendant 3 secondes
+    if (user.status == 200) {
+        let welcome = document.querySelector(".welcome");
+        let loader = document.querySelector(".load-3");
+        loader.style.display = "block";
+        welcome.innerHTML = "Connexion réussie, vous allez être redirigé vers la page d'accueil";
+        setTimeout(function () {
+            window.location.href = "./index.html";
+        }, 3000);
+    } else {
+        let error = document.querySelector(".erreur");
+        error.innerHTML = "Email ou mot de passe incorrect";
+    }
+    user = await user.json();
+}
