@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="./assets/css/article.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Articles</title>
+</head>
+
+<body>
+    <header>
+        <h1>Articles</h1>
+        <div class="headerLink">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Articles</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <div class="addArticle">
+            <form class="articleAdd">
+                <h2>Ajouter un article</h2>
+                <label for="title">Titre :</label>
+                <input type="text" id="title" name="title" required>
+                <label for="description">Description :</label>
+                <textarea type="text" id="description" name="description" required></textarea>
+                <div class="addBtn">
+                    <button type="button" onclick="addArticle()">Ajouter</button>
+                </div>
+            </form>
+        </div>
+        <section class="container">
+            <div class="containerArticle"></div>
+        </section>
+    </main>
+
+    <script src="./assets/js/article.js"></script>
+</body>
+
+</html>

@@ -246,6 +246,8 @@ async function login() {
 
     // Si la connexion a réussi, rediriger vers la page d'accueil après avoir affiché un message de bienvenue pendant 3 secondes
     if (user.status == 200) {
+        user = await user.json();
+        localStorage.setItem("user", user);
         let welcome = document.querySelector(".welcome");
         let loader = document.querySelector(".load-3");
         loader.style.display = "block";
